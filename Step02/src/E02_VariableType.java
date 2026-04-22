@@ -24,6 +24,10 @@ public class E02_VariableType {
 		System.out.println(ch1);
 		System.out.println(ch2);
 		
+		boolean flag = true;
+		System.out.println(flag);
+		flag = false;
+		System.out.println(flag);
 		
 		
 	}
