@@ -26,6 +26,19 @@ public class E06_Operator {
 		
 		boolean flag = n1 > 5 || n2 < 10;
 		System.out.println(!flag);
+		/*
+		 * 	단락 회로
+		 * 		논리 연산자로 조건식 비교시 앞전 비교연산에서 true나 false가 확정되면
+		 * 		뒤에있는 비교연산이 생략된다.
+		 */
+		System.out.println(n1 < 5 || ++n2 > 10); // true
+		System.out.println(n2); // 7? 8
+		System.out.println(n1 > 5 && ++n2 > 10); // false
+		System.out.println(n2); // 7? 9
+		
+		int num = (int)Math.floor(Math.random() * 100);//0~99 랜덤하게 뽑기
+		String result = num % 2 == 0 ? "짝수" : "홀수";
+		System.out.println(result + "(" + num + ")");
 	}
 
 }
