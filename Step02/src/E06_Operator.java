@@ -1,9 +1,13 @@
-
+/**
+ * 이 클래스는 비교 연산자, 논리 연산자, 그리고 삼항 연산자를 설명합니다.
+ */
 public class E06_Operator {
 
 	public static void main(String[] args) {
 		int n1 = 10, n2 = 7;
-		// >  <  >=  <=  ==  !=
+		
+		// 1. 비교 연산자: 결과는 항상 boolean(true/false)
+		// > (크다), < (작다), >= (크거나 같다), <= (작거나 같다), == (같다), != (같지 않다)
 		System.out.println(n1 > n2);
 		System.out.println(n1 < n2);
 		System.out.println(n1 >= n2);
@@ -12,45 +16,39 @@ public class E06_Operator {
 		System.out.println(n1 != n2);
 		
 		/*
-		 * 	논리 연산자 : 조건식들을 두개 이상 사용하거나, 조건식의 결과를 반대로 뒤집을 때
-		 * 	AND : 양쪽의 조건식이 모두 true일때 true가 되는 연산자 --> && 
-		 * 	OR : 양쪽의 조건식이 둘 중에 하나라도 true 이면 true가 되는 연산자 --> ||
-		 *  NOT : 조건식의 결과를 반대로 뒤집는 연산 --> !
+		 * 	2. 논리 연산자: 여러 조건을 조합할 때 사용
+		 * 	AND (&&) : 양쪽 모두 true여야 결과가 true
+		 * 	OR  (||) : 둘 중 하나만 true여도 결과가 true
+		 *  NOT (!)  : true를 false로, false를 true로 반전
 		 */
-		//n1이 5보다 크고 20보다 작냐?
+		// n1이 5보다 크고(AND) 20보다 작은가?
 		System.out.println(n1 > 5 && n1 < 20);
-		//n2가 양수이면서 짝수냐?
+		// n2가 양수이면서(AND) 짝수인가?
 		System.out.println(n2 > 0 && n2 % 2 == 0);
-		//n1이 5보다 크거나 n2가 10보다 작냐?
+		// n1이 5보다 크거나(OR) n2가 10보다 작은가?
 		System.out.println(n1 > 5 || n2 < 10);
 		
 		boolean flag = n1 > 5 || n2 < 10;
-		System.out.println(!flag);
-		/*
-		 * 	단락 회로
-		 * 		논리 연산자로 조건식 비교시 앞전 비교연산에서 true나 false가 확정되면
-		 * 		뒤에있는 비교연산이 생략된다.
-		 */
-		System.out.println(n1 < 5 || ++n2 > 10); // true
-		System.out.println(n2); // 7? 8
-		System.out.println(n1 > 5 && ++n2 > 10); // false
-		System.out.println(n2); // 7? 9
+		System.out.println(!flag); // 결과 반전
 		
-		int num = (int)Math.floor(Math.random() * 100);//0~99 랜덤하게 뽑기
-		String result = num % 2 == 0 ? "짝수" : "홀수";
-		System.out.println(result + "(" + num + ")");
+		/*
+		 * 	3. 단락 회로 평가 (Short-Circuit Evaluation)
+		 * 		논리 연산 시 앞의 조건만으로 결과가 확정되면 뒤의 조건은 실행하지 않음
+		 */
+		// OR 연산: 앞이 true면 뒤는 검사하지 않음
+		System.out.println(n1 < 5 || ++n2 > 10); // n1 < 5 가 false이므로 뒤를 실행함. n2는 8이 됨.
+		System.out.println("n2의 현재 값: " + n2); 
+		
+		// AND 연산: 앞이 false면 뒤는 검사하지 않음
+		System.out.println(n1 > 5 && ++n2 > 10); // n1 > 5 가 true이므로 뒤를 실행함. n2는 9가 됨.
+		System.out.println("n2의 현재 값: " + n2);
+		
+		/*
+		 *  4. 삼항 연산자 (Conditional Operator)
+		 *  조건식 ? 참일때_값 : 거짓일때_값
+		 */
+		int num = (int)Math.floor(Math.random() * 100); // 0~99 사이의 랜덤 숫자 생성
+		String result = (num % 2 == 0) ? "짝수" : "홀수";
+		System.out.println(num + "은(는) " + result + "입니다.");
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
