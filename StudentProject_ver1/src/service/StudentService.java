@@ -20,8 +20,15 @@ public class StudentService {
 		arr[idx++] = new StudentVO("20230005", "최민수", "전자공학과", 3.5);	
 	}
 	
-	//1. 학생정보 전체 출력
-	
+	/**
+	 * 학생정보 전체 출력
+	 */
+	public void printAllStudentVO() {
+		System.out.println("전체 학생정보를 조회합니다.............");
+		for (int i = 0; i < idx; i++) {
+			arr[i].printInfo();
+		}
+	}
 	//2. 학생정보 추가
 	
 	//3. 학생정보 수정
