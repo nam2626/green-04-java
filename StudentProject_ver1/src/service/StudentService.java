@@ -148,8 +148,23 @@ public class StudentService {
 		idx--;
 		System.out.println("학생정보 삭제가 완료되었습니다.");
 	}
+
+	//5. 학생정보 검색
+	public void searchStudentVO(Scanner sc) {
+		System.out.println("학생정보 조회 작업을 시작합니다......");
+		
+		System.out.println("조회할 학생 이름을 입력하세요 : ");
+		String name = sc.nextLine();
+		
+		for(int i=0;i<idx;i++) {
+			if(arr[i].getName().indexOf(name) != -1)
+				arr[i].printInfo();
+		}
+		
+		//총 0건 조회되었습니다.
+		
+	}
 	
-	// 추후 구현 예정: 5. 학생정보 검색
 	
 }
 

@@ -48,6 +48,9 @@ public class StudentMain {
 				// 학생 정보 수정 기능 호출
 				service.updateStudentVO(sc);
 				break;
+			case 4:
+				service.searchStudentVO(sc);
+				break;
 			case 5:
 				// 전체 학생 목록 출력 기능 호출
 				service.printAllStudentVO();
