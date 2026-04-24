@@ -28,6 +28,9 @@ public class StudentMain {
 			}
 			
 			switch(no) {
+			case 1:
+				service.appendStudentVO(sc);
+				break;
 			case 5:
 				service.printAllStudentVO();
 				break;

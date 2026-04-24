@@ -31,6 +31,20 @@ public class StudentService {
 			arr[i].printInfo();
 		}
 	}
+	
+	/**
+	 * 학생정보 검색
+	 * @param no 검색할 학번
+	 * @return 검색결과 리턴(-1 : 해당 학생정보 없음, >= 0 : 해당 학생 정보 있음) 
+	 */
+	public int searchStudentVO(String no) {
+		for(int i=0;i<idx;i++) {
+			if(arr[i].getNo().equals(no))
+				return i;//0보다 크거나 같은값
+		}
+		return -1;
+	}
+	
 	/**
 	 * 학생정보 추가
 	 * @param sc 입력을 담당할 객체
@@ -44,8 +58,16 @@ public class StudentService {
 		}
 		
 		// 1. 학생정보 입력 받음.
+		// 입력한 학번이 중복되었으면 다시 입력 받음. 
 		System.out.print("등록할 학생의 학번 : ");
 		String no = sc.nextLine();
+		while(true) {
+			if(searchStudentVO(no) == -1) break;
+			System.out.println("학번이 중복되었습니다.");
+			System.out.print("학번을 다시 입력해주세요 : ");
+			no = sc.nextLine();
+		}
+				
 		System.out.print("등록할 학생의 이름 : ");
 		String name = sc.nextLine();
 		System.out.print("등록할 학생의 학과명 : ");

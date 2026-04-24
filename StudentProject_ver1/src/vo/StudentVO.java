@@ -24,6 +24,10 @@ public class StudentVO {
 		System.out.println(no + " " + name + " " + majorName + " " + score);
 	}
 	
+	public String getNo() {
+		return no;
+	}
+	
 }
 
 
