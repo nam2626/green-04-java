@@ -149,20 +149,31 @@ public class StudentService {
 		System.out.println("학생정보 삭제가 완료되었습니다.");
 	}
 
-	//5. 학생정보 검색
+	/**
+	 * 학생 이름을 키워드로 검색하여 해당 정보를 출력하는 메서드
+	 * 부분 일치 검색(indexOf)을 지원함
+	 * @param sc 입력을 담당할 Scanner 객체
+	 */
 	public void searchStudentVO(Scanner sc) {
 		System.out.println("학생정보 조회 작업을 시작합니다......");
 		
-		System.out.println("조회할 학생 이름을 입력하세요 : ");
+		// 1. 검색할 이름 키워드 입력
+		System.out.print("조회할 학생 이름을 입력하세요 : ");
 		String name = sc.nextLine();
 		
-		for(int i=0;i<idx;i++) {
-			if(arr[i].getName().indexOf(name) != -1)
+		int count = 0; // 검색된 건수를 저장할 변수
+		
+		// 2. 배열을 순회하며 이름에 키워드가 포함되어 있는지 확인
+		for(int i=0; i < idx; i++) {
+			// getName().indexOf(keyword)가 -1이 아니면 키워드가 포함된 것임
+			if(arr[i].getName().indexOf(name) != -1) {
 				arr[i].printInfo();
+				count++;
+			}
 		}
 		
-		//총 0건 조회되었습니다.
-		
+		// 3. 검색 결과 건수 출력
+		System.out.println("총 " + count + "건 조회되었습니다.");
 	}
 	
 	

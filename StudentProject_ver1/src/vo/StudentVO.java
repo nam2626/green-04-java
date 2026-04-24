@@ -48,26 +48,44 @@ public class StudentVO {
 		return no;
 	}
 
+	/**
+	 * 이름 Getter
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 이름 Setter
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 학과명 Getter
+	 */
 	public String getMajorName() {
 		return majorName;
 	}
 
+	/**
+	 * 학과명 Setter
+	 */
 	public void setMajorName(String majorName) {
 		this.majorName = majorName;
 	}
 
+	/**
+	 * 평점 Getter
+	 */
 	public double getScore() {
 		return score;
 	}
 
+	/**
+	 * 평점 Setter
+	 */
 	public void setScore(double score) {
 		this.score = score;
 	}

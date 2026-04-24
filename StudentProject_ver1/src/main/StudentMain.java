@@ -49,6 +49,7 @@ public class StudentMain {
 				service.updateStudentVO(sc);
 				break;
 			case 4:
+				// 학생 정보 조회(이름 검색) 기능 호출
 				service.searchStudentVO(sc);
 				break;
 			case 5:
