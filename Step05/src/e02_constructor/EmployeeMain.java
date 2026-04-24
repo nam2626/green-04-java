@@ -19,7 +19,7 @@ public class EmployeeMain {
 		arr[i++] = new EmployeeVO("20003254", "약지연", false, "차장", 7200);
 		
 		//배열에 있는 전체 사원정보 출력
-		for (int j = 0; j < arr.length; j++) {
+		for (int j = 0; j < i; j++) {
 			arr[j].printInfo();
 		}
 		
