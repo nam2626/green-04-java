@@ -2,10 +2,14 @@ package main;
 
 import java.util.Scanner;
 
+import service.StudentService;
+
+
 public class StudentMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		StudentService service = new StudentService();
 		
 		while(true) {
 			System.out.println("-- 학적관리 프로그램 --");
@@ -20,6 +24,12 @@ public class StudentMain {
 			
 			if(no == 0) {
 				System.out.println("프로그램을 종료합니다.");
+				break;
+			}
+			
+			switch(no) {
+			case 5:
+				service.printAllStudentVO();
 				break;
 			}
 		}
