@@ -5,13 +5,18 @@ package vo;
  */
 public class StudentVO {
 	// 필드(데이터)
-	private final String no;    // 학번 - final로 선언하면 반드시 생성자나 해당 코드에서 초기화
+	// 학번은 한 번 정해지면 변경되지 않도록 final로 선언
+	private final String no;    
 	private String name;        // 이름
 	private String majorName;   // 학과명
 	private double score;       // 평점
 
 	/**
 	 * 모든 필드를 초기화하는 생성자
+	 * @param no 학번 (고유 식별자)
+	 * @param name 이름
+	 * @param majorName 학과명
+	 * @param score 평점
 	 */
 	public StudentVO(String no, String name, String majorName, double score) {
 		this.no = no;
@@ -21,7 +26,7 @@ public class StudentVO {
 	}
 	
 	/**
-	 * 학생 정보를 일괄 수정하는 메서드
+	 * 학번을 제외한 나머지 학생 정보를 수정하는 메서드
 	 */
 	public void updateStudentVO(String name, String majorName, double score) {
 		this.name = name;
@@ -30,14 +35,14 @@ public class StudentVO {
 	}
 	
 	/**
-	 * 학생의 상세 정보를 콘솔에 출력하는 메서드
+	 * 학생 정보를 공백으로 구분하여 한 줄로 출력
 	 */
 	public void printInfo() {
 		System.out.println(no + " " + name + " " + majorName + " " + score);
 	}
 	
 	/**
-	 * 학번을 반환하는 Getter 메서드
+	 * 학번 Getter
 	 */
 	public String getNo() {
 		return no;

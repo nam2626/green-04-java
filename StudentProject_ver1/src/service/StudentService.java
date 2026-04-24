@@ -86,33 +86,68 @@ public class StudentService {
 		System.out.println("학생 정보 등록이 완료되었습니다.");
 	}
 	
-	//3. 학생정보 수정
+	/**
+	 * 기존 학생 정보를 수정하는 메서드
+	 * @param sc 입력을 담당할 Scanner 객체
+	 */
 	public void updateStudentVO(Scanner sc) {
 		System.out.println("학생정보 수정을 시작합니다....");
-		//1. 수정할 학번 입력 받음
+		
+		// 1. 수정할 학생의 학번 입력
 		System.out.print("수정할 학생의 학번 : ");
 		String no = sc.nextLine();
-		//2. 수정할 학생이 있는지? 검색
+		
+		// 2. 검색을 통해 인덱스 확인
 		int i = searchStudentVO(no);
-		//3. 수정할 학생이 없으면 메서드 종료
+		
+		// 3. 존재하지 않으면 종료
 		if(i == -1) {
 			System.out.println("수정할 학생정보가 없습니다.");
 			return;
 		}
-		//4. 수정할 학생이 있으면, 나머지 정보를 받아서 수정
+		
+		// 4. 새로운 정보(이름, 학과, 평점) 입력 받아 수정 적용
 		System.out.print("수정할 학생의 이름 : ");
 		String name = sc.nextLine();
 		System.out.print("수정할 학생의 학과명 : ");
 		String majorName = sc.nextLine();
 		System.out.print("수정할 학생의 평점 : ");
-		double score = sc.nextDouble(); sc.nextLine();
+		double score = sc.nextDouble(); 
+		sc.nextLine(); // 버퍼 비우기
 		
 		arr[i].updateStudentVO(name, majorName, score);
-		
 		System.out.println("학생정보 수정이 완료되었습니다.");
 	}
 	
-	// 추후 구현 예정: 4. 학생정보 삭제
+	/**
+	 * 학생 정보를 배열에서 삭제하는 메서드
+	 * 삭제 후 배열 요소를 앞으로 당겨 빈 공간을 메움
+	 * @param sc 입력을 담당할 Scanner 객체
+	 */
+	public void deleteStudentVO(Scanner sc) {
+		System.out.println("학생정보 삭제를 시작합니다....");
+		
+		// 1. 삭제할 학번 입력 및 검색
+		System.out.print("삭제할 학생의 학번 : ");
+		String no = sc.nextLine();
+		int i = searchStudentVO(no);
+		
+		// 2. 존재하지 않으면 종료
+		if(i == -1) {
+			System.out.println("삭제할 학생정보가 없습니다.");
+			return;
+		}
+		
+		// 3. 삭제 위치부터 뒤의 요소들을 한 칸씩 앞으로 이동(Shift)
+		for(int j=i; j < idx-1; j++) {
+			arr[j] = arr[j+1];
+		}
+		
+		// 4. 마지막 데이터 참조를 제거하고 개수(idx) 감소
+		arr[idx-1] = null; 
+		idx--;
+		System.out.println("학생정보 삭제가 완료되었습니다.");
+	}
 	
 	// 추후 구현 예정: 5. 학생정보 검색
 	

@@ -40,7 +40,12 @@ public class StudentMain {
 				// 학생 정보 등록 기능 호출
 				service.appendStudentVO(sc);
 				break;
+			case 2:
+				// 학생 정보 삭제 기능 호출
+				service.deleteStudentVO(sc);
+				break;
 			case 3:
+				// 학생 정보 수정 기능 호출
 				service.updateStudentVO(sc);
 				break;
 			case 5:
