@@ -1,5 +1,7 @@
 package service;
 
+import java.util.Scanner;
+
 import vo.StudentVO;
 
 public class StudentService {
@@ -29,8 +31,32 @@ public class StudentService {
 			arr[i].printInfo();
 		}
 	}
-	//2. 학생정보 추가
-	
+	/**
+	 * 학생정보 추가
+	 * @param sc 입력을 담당할 객체
+	 */
+	public void appendStudentVO(Scanner sc) {
+		System.out.println("학생정보등록을 시작합니다......");
+		// 더 이상 입력할 공간이 없으면 해당 메서드를 종료
+		if(idx == arr.length) {
+			System.out.println("더 이상 저장할 공간이 없습니다.");
+			return;
+		}
+		
+		// 1. 학생정보 입력 받음.
+		System.out.print("등록할 학생의 학번 : ");
+		String no = sc.nextLine();
+		System.out.print("등록할 학생의 이름 : ");
+		String name = sc.nextLine();
+		System.out.print("등록할 학생의 학과명 : ");
+		String majorName = sc.nextLine();
+		System.out.print("등록할 학생의 평점 : ");
+		double score = sc.nextDouble();
+		sc.nextLine();
+
+		//2. 배열에 입력한 학생정보를 기준으로 StudentVO 객체 생성해서 추가
+		arr[idx++] = new StudentVO(no, name, majorName, score);
+	}
 	//3. 학생정보 수정
 	
 	//4. 학생정보 삭제
