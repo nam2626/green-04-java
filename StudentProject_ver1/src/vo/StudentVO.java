@@ -5,7 +5,7 @@ package vo;
  */
 public class StudentVO {
 	// 필드(데이터)
-	private String no;          // 학번
+	private final String no;    // 학번 - final로 선언하면 반드시 생성자나 해당 코드에서 초기화
 	private String name;        // 이름
 	private String majorName;   // 학과명
 	private double score;       // 평점
@@ -23,8 +23,7 @@ public class StudentVO {
 	/**
 	 * 학생 정보를 일괄 수정하는 메서드
 	 */
-	public void updateStudentVO(String no, String name, String majorName, double score) {
-		this.no = no;
+	public void updateStudentVO(String name, String majorName, double score) {
 		this.name = name;
 		this.majorName = majorName;
 		this.score = score;

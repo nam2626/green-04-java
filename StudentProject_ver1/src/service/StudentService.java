@@ -86,7 +86,31 @@ public class StudentService {
 		System.out.println("학생 정보 등록이 완료되었습니다.");
 	}
 	
-	// 추후 구현 예정: 3. 학생정보 수정
+	//3. 학생정보 수정
+	public void updateStudentVO(Scanner sc) {
+		System.out.println("학생정보 수정을 시작합니다....");
+		//1. 수정할 학번 입력 받음
+		System.out.print("수정할 학생의 학번 : ");
+		String no = sc.nextLine();
+		//2. 수정할 학생이 있는지? 검색
+		int i = searchStudentVO(no);
+		//3. 수정할 학생이 없으면 메서드 종료
+		if(i == -1) {
+			System.out.println("수정할 학생정보가 없습니다.");
+			return;
+		}
+		//4. 수정할 학생이 있으면, 나머지 정보를 받아서 수정
+		System.out.print("수정할 학생의 이름 : ");
+		String name = sc.nextLine();
+		System.out.print("수정할 학생의 학과명 : ");
+		String majorName = sc.nextLine();
+		System.out.print("수정할 학생의 평점 : ");
+		double score = sc.nextDouble(); sc.nextLine();
+		
+		arr[i].updateStudentVO(name, majorName, score);
+		
+		System.out.println("학생정보 수정이 완료되었습니다.");
+	}
 	
 	// 추후 구현 예정: 4. 학생정보 삭제
 	
