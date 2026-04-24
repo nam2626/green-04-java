@@ -11,6 +11,10 @@ public class StudentVO {
 	// 평점
 	private double score;
 
+	StudentVO(){
+		System.out.println("StudentVO 기본생성자");
+	}
+	
 	// 메서드
 	// 초기화 메서드
 	public void init(String s, String n, String mn, double sc) {
