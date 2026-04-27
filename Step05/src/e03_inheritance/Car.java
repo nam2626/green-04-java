@@ -1,8 +1,8 @@
 package e03_inheritance;
 
 public class Car {
-	private String modelName;
-	private String brand;
+	protected String modelName;
+	protected String brand;
 
 	public Car(String modelName, String brand) {
 		this.modelName = modelName;
@@ -13,7 +13,5 @@ public class Car {
 	public String toString() {
 		return "Car [modelName=" + modelName + ", brand=" + brand + "]";
 	}
-	
-	
 	
 }

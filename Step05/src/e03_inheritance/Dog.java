@@ -3,7 +3,7 @@ package e03_inheritance;
 public class Dog extends Animal{
 
 	public Dog() {
-		super();
+		super();//반드시 부모생성자가 먼저 호출 되어야함.
 		System.out.println("Dog Constructor");
 	}
 	
