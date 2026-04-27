@@ -12,8 +12,11 @@ public class AnimalMain {
 	
 	public static void main(String[] args) {
 		Animal animal = new Animal();
+		System.out.println("-----");
 		Human human = new Human();
+		System.out.println("-----");
 		Dog dog = new Dog();
+		System.out.println("-----");
 		
 		// 1. 일반적인 메서드 호출
 		animal.eat();
