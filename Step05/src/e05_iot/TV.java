@@ -17,7 +17,7 @@ public class TV extends Power{
 
 	@Override
 	public void powerOff() {
-		power = true;
+		power = false;
 		System.out.println("TV 전원 Off");
 	}
 	
