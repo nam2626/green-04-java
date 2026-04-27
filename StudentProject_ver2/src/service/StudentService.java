@@ -9,7 +9,7 @@ import vo.StudentVO;
  * 싱글톤 패턴을 적용하여 프로그램 전체에서 동일한 데이터 저장소(arr)를 공유함
  */
 public class StudentService {
-	// 자기 자신의 인스턴스를 하나만 생성하여 유지함
+	// 자기 자신의 인스턴스를 하나만 생성하여 유지함 (싱글톤)
 	private static StudentService instance = new StudentService();
 	
 	// 데이터 저장용 배열과 현재 개수 관리 변수
@@ -48,6 +48,8 @@ public class StudentService {
 	
 	/**
 	 * 학번으로 학생 존재 여부를 확인하는 인덱스 검색 메서드
+	 * @param no 검색할 학번
+	 * @return 찾으면 배열 인덱스, 못 찾으면 -1
 	 */
 	public int searchStudentVO(String no) {
 		for(int i=0;i<idx;i++) {
@@ -58,27 +60,88 @@ public class StudentService {
 	}
 	
 	/**
-	 * 전달받은 학생 VO 객체를 배열의 빈 공간에 추가함
+	 * 새로운 학생 정보(객체)를 배열의 빈 공간에 추가함
 	 */
 	public boolean appendStudentVO(StudentVO vo) {
 		if(idx == arr.length) {
+			System.out.println("더 이상 저장할 공간이 없습니다.");
 			return false;
 		}
 		arr[idx++] = vo;
 		return true;
 	}
 	
-	// --- 아래 기능들은 아직 컨트롤러로 분리되지 않은 상태입니다 ---
-	
+	/**
+	 * 기존 학생 정보를 수정하는 메서드 (기능 이전 전까지 서비스에서 유지)
+	 */
 	public void updateStudentVO(Scanner sc) {
-		// (기존 수정 로직 유지...)
+		System.out.println("학생정보 수정을 시작합니다....");
+		
+		System.out.print("수정할 학생의 학번 : ");
+		String no = sc.nextLine();
+		
+		int i = searchStudentVO(no);
+		
+		if(i == -1) {
+			System.out.println("수정할 학생정보가 없습니다.");
+			return;
+		}
+		
+		System.out.print("수정할 학생의 이름 : ");
+		String name = sc.nextLine();
+		System.out.print("수정할 학생의 학과명 : ");
+		String majorName = sc.nextLine();
+		System.out.print("수정할 학생의 평점 : ");
+		double score = sc.nextDouble(); 
+		sc.nextLine(); // 버퍼 비우기
+		
+		arr[i].updateStudentVO(name, majorName, score);
+		System.out.println("학생정보 수정이 완료되었습니다.");
 	}
 	
+	/**
+	 * 학생 정보를 배열에서 삭제하는 메서드 (기능 이전 전까지 서비스에서 유지)
+	 */
 	public void deleteStudentVO(Scanner sc) {
-		// (기존 삭제 로직 유지...)
+		System.out.println("학생정보 삭제를 시작합니다....");
+		
+		System.out.print("삭제할 학생의 학번 : ");
+		String no = sc.nextLine();
+		int i = searchStudentVO(no);
+		
+		if(i == -1) {
+			System.out.println("삭제할 학생정보가 없습니다.");
+			return;
+		}
+		
+		// 한 칸씩 당겨서 빈 공간 메우기
+		for(int j=i; j < idx-1; j++) {
+			arr[j] = arr[j+1];
+		}
+		
+		arr[idx-1] = null; 
+		idx--;
+		System.out.println("학생정보 삭제가 완료되었습니다.");
 	}
 
+	/**
+	 * 학생 이름을 키워드로 검색하여 정보를 출력하는 메서드 (기능 이전 전까지 서비스에서 유지)
+	 */
 	public void searchStudentVO(Scanner sc) {
-		// (기존 검색 로직 유지...)
+		System.out.println("학생정보 조회 작업을 시작합니다......");
+		
+		System.out.print("조회할 학생 이름을 입력하세요 : ");
+		String name = sc.nextLine();
+		
+		int count = 0; 
+		
+		for(int i=0; i < idx; i++) {
+			if(arr[i].getName().indexOf(name) != -1) {
+				arr[i].printInfo();
+				count++;
+			}
+		}
+		
+		System.out.println("총 " + count + "건 조회되었습니다.");
 	}
 }
