@@ -19,8 +19,10 @@ public class HandlerMapping {
 		case 1:
 			controller = new StudentInsertController();
 			break;
+		case 5:
+			controller = new StudentAllPrintController();
+			break;
 		}
 		return controller;
 	}
-	
 }

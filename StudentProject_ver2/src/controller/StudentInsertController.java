@@ -33,7 +33,8 @@ public class StudentInsertController extends Controller {
 		sc.nextLine(); // 버퍼 비우기
 		
 		// 3. VO 객체 생성 및 서비스로 전달
-		boolean result = StudentService.getInstance().appendStudentVO(new StudentVO(no, name, majorName, score));
+		boolean result = StudentService.getInstance()
+				.appendStudentVO(new StudentVO(no, name, majorName, score));
 		
 		if(result) {
 			System.out.println("학생 정보 등록이 완료되었습니다.");

@@ -35,13 +35,10 @@ public class StudentService {
 	}
 	
 	/**
-	 * 등록된 모든 학생 정보를 출력하는 메서드
+	 * 학생 정보가 담긴 배열을 반환하는 메서드
 	 */
-	public void printAllStudentVO() {
-		System.out.println("전체 학생정보를 조회합니다.............");
-		for (int i = 0; i < idx; i++) {
-			arr[i].printInfo();
-		}
+	public StudentVO[] getArr() {
+		return arr;
 	}
 	
 	/**
