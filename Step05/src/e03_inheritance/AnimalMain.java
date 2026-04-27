@@ -13,10 +13,12 @@ public class AnimalMain {
 	public static void main(String[] args) {
 		Animal animal = new Animal();
 		Human human = new Human();
+		Dog dog = new Dog();
 		
 		// 1. 일반적인 메서드 호출
 		animal.eat();
 		human.eat();
+		dog.eat();
 		
 		System.out.println("--------------------");
 		
@@ -27,6 +29,3 @@ public class AnimalMain {
 	}
 
 }
-
-
-
