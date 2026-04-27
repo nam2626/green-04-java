@@ -2,6 +2,10 @@ package e03_inheritance;
 
 public class Dog extends Animal{
 
+	public Dog() {
+		System.out.println("Dog Constructor");
+	}
+	
 	//재정의라고 해서 기존 부모클래스의 기능을 제거하는게 아님
 	//동일한 메서드가 존재함. 타입이 Dog라서 Dog에 있는 eat를 우선적으로 실행
 	@Override

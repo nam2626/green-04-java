@@ -6,6 +6,10 @@ package e03_inheritance;
  */
 public class Human extends Animal{
 	
+	public Human() {
+		System.out.println("Human Constructor");
+	}
+	
 	/**
 	 * 메서드 오버라이딩(Method Overriding):
 	 * 부모로부터 물려받은 메서드를 자식 클래스에 맞게 재정의하는 것
