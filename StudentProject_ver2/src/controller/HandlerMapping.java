@@ -10,7 +10,15 @@ public class HandlerMapping {
 			instance = new HandlerMapping();
 		return instance;
 	}
-	
-	
+	/*
+	 * 메뉴 번호에 해당하는 작업을 하는 컨트롤러 생성해서 리턴하는 메서드
+	 */
+	public Controller createController(int no) {
+		Controller controller = null;
+		switch(no) {
+		
+		}
+		return controller;
+	}
 	
 }
