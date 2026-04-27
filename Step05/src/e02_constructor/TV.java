@@ -22,6 +22,8 @@ public class TV {
 	 * 채널 최소값 1
 	 */
 	private final int MIN_CHANNEL_VALUE = 1;
+	private final int MAX_VOLUM_VALUE = 50;
+	private final int MIN_VOLUM_VALUE = 0;
 	//2. 기본 생성자(원하시는 값으로 초기화)
 	public TV() {
 		ch = 24;
@@ -60,6 +62,22 @@ public class TV {
 		ch--;
 		if(ch < MIN_CHANNEL_VALUE) ch = MAX_CHANNEL_VALUE;
 		System.out.println("현재 채널 : " + ch);
+	}
+	//음량UP
+	public void volUp() {
+		if(!power) return;
+		if(mute) muteOnOff();
+		if(vol < MAX_VOLUM_VALUE)
+			vol++;
+		System.out.println("현재 음량 : "+vol);
+	}
+	//음량DOWN
+	public void volDown() {
+		if(!power) return;
+		if(mute) muteOnOff();
+		if(vol > MIN_VOLUM_VALUE)
+			vol--;
+		System.out.println("현재 음량 : "+vol);
 	}
 	
 }
