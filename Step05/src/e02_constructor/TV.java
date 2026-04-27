@@ -35,4 +35,23 @@ public class TV {
 		System.out.println(mute ? "음소거가 활성화 되었습니다." : "음소거가 비활성화 되었습니다.");
 	}
 	
+	//채널UP
+	//	실행 할때마다 채널값이 1씩 증가
+	//	마지막 채널에서는 첫번째 채널로 이동
+	public void chUp() {
+		if(!power) return;
+		ch = ch % 480 + 1;		
+		System.out.println("현재 채널 : " + ch);
+	}
+	
+	//채널DOWN
+	// 실행할 때 마다 채널값이 1씩 감소
+	// 첫번째 채널에서는 마지막 채널로 이동
+	public void chDown() {
+		if(!power) return;
+		ch = ch - 1;
+		if(ch < 1) ch = 480;
+		System.out.println("현재 채널 : " + ch);
+	}
+	
 }
