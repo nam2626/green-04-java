@@ -10,5 +10,25 @@ package e06_static;
  *  3. 어디서든 동일한 인스턴스에 접근할 수 있음.
  */
 public class CardFactory {
-
+	//1. 싱글톤 패턴을 적용할 클래스를 private static으로 객체 생성
+	private static CardFactory instance = new CardFactory();
+	
+	private int cardNo;
+	
+	//2. 생성자는 private 생성자 이용
+	private CardFactory() {
+		cardNo = 1000;
+	}
+	
+	//3. 1번에 있는 인스턴스를 반환하는 public static get 메서드를 작성
+	public static CardFactory getInstance() {
+		if(instance == null)
+			instance = new CardFactory();
+		return instance;
+	}
+	
+	public Card createCard(String name) {
+		return new Card(cardNo++, name);		
+	}
+	
 }
