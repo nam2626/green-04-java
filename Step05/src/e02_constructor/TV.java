@@ -14,6 +14,14 @@ public class TV {
 	private int vol;
 	private boolean power;
 	private boolean mute;
+	/**
+	 * 채널 최대값 480
+	 */
+	private final int MAX_CHANNEL_VALUE = 480;
+	/**
+	 * 채널 최소값 1
+	 */
+	private final int MIN_CHANNEL_VALUE = 1;
 	//2. 기본 생성자(원하시는 값으로 초기화)
 	public TV() {
 		ch = 24;
@@ -40,7 +48,7 @@ public class TV {
 	//	마지막 채널에서는 첫번째 채널로 이동
 	public void chUp() {
 		if(!power) return;
-		ch = ch % 480 + 1;		
+		ch = ch % MAX_CHANNEL_VALUE + 1;		
 		System.out.println("현재 채널 : " + ch);
 	}
 	
@@ -49,8 +57,8 @@ public class TV {
 	// 첫번째 채널에서는 마지막 채널로 이동
 	public void chDown() {
 		if(!power) return;
-		ch = ch - 1;
-		if(ch < 1) ch = 480;
+		ch--;
+		if(ch < MIN_CHANNEL_VALUE) ch = MAX_CHANNEL_VALUE;
 		System.out.println("현재 채널 : " + ch);
 	}
 	
