@@ -27,6 +27,10 @@ public class HandlerMapping {
 			// 학생 정보 등록을 담당하는 컨트롤러 생성
 			controller = new StudentInsertController();
 			break;
+		case 2:
+			// 학생 정보 삭제를 담당하는 컨트롤러 생성
+			controller = new StudentDeleteController();
+			break;
 		case 5:
 			// 전체 학생 정보 출력을 담당하는 컨트롤러 생성
 			controller = new StudentAllPrintController();
