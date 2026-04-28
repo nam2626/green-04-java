@@ -58,6 +58,14 @@ public class StudentService {
 		}
 		return -1;
 	}
+	
+	public StudentVO searchStudentVO2(String no) {
+		for (int i = 0; i < idx; i++) {
+			if (arr[i].getNo().equals(no))
+				return arr[i];
+		}
+		return null;
+	}
 
 	/**
 	 * 새로운 학생 정보(객체)를 배열의 빈 공간에 추가함
@@ -71,33 +79,6 @@ public class StudentService {
 		return true;
 	}
 
-	/**
-	 * 기존 학생 정보를 수정하는 메서드 (기능 이전 전까지 서비스에서 유지)
-	 */
-	public void updateStudentVO(Scanner sc) {
-		System.out.println("학생정보 수정을 시작합니다....");
-
-		System.out.print("수정할 학생의 학번 : ");
-		String no = sc.nextLine();
-
-		int i = searchStudentVO(no);
-
-		if (i == -1) {
-			System.out.println("수정할 학생정보가 없습니다.");
-			return;
-		}
-
-		System.out.print("수정할 학생의 이름 : ");
-		String name = sc.nextLine();
-		System.out.print("수정할 학생의 학과명 : ");
-		String majorName = sc.nextLine();
-		System.out.print("수정할 학생의 평점 : ");
-		double score = sc.nextDouble();
-		sc.nextLine(); // 버퍼 비우기
-
-		arr[i].updateStudentVO(name, majorName, score);
-		System.out.println("학생정보 수정이 완료되었습니다.");
-	}
 
 	/**
 	 * 학생 정보를 배열에서 삭제하는 메서드 (기능 이전 전까지 서비스에서 유지)
