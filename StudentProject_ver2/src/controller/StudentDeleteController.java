@@ -12,7 +12,12 @@ public class StudentDeleteController extends Controller {
 		System.out.print("삭제할 학생의 학번 : ");
 		String no = sc.nextLine();
 		
-		
+		if(StudentService.getInstance().deleteStudentVO(no)){
+			System.out.println("학생정보 삭제가 완료되었습니다.");
+		}else {
+			System.out.println("삭제할 학생 정보가 없습니다.");
+		}
+			
 		
 		
 	}
