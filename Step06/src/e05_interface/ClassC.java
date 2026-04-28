@@ -1,6 +1,6 @@
 package e05_interface;
 
-public class ClassC implements InterA, InterB{
+public class ClassC extends SuperClass implements InterA, InterB {
 
 	@Override
 	public void interB() {
