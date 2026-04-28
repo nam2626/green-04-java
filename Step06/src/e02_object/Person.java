@@ -2,9 +2,13 @@ package e02_object;
 
 import java.util.Objects;
 
+/**
+ * 사용자 정보를 저장하는 클래스
+ * Object 클래스의 메서드들을 재정의하여 객체 비교 및 정보 확인에 활용함
+ */
 public class Person {
-	private String name;
-	private int age;
+	private String name; // 이름
+	private int age;     // 나이
 	
 	public Person(String name, int age) {
 		super();
@@ -12,46 +16,43 @@ public class Person {
 		this.age = age;
 	}
 	
-	/*	객체가 가지고 있는 필드, 메서드의 결과를
-	 * 	외부에서 쉽게 확인이 가능하게
-	 * 	필드와 메서드의 결과를 문자열로 만들어서 리턴하는 메서드
-	 * 
-	 * 	재정의하지 않으면
-	 * 	타입명@객체의 해시코드(16진수)
+	/**
+	 * 객체의 필드 정보를 문자열로 반환함
+	 * 재정의하지 않으면 '클래스명@해시코드' 형식이 반환됨
 	 */
 	@Override
 	public String toString() {
 		return name + " / " + age;
 	}
-	/*
-	 * 해시값을 기반으로 사용되는 컬렉션에서 사용할 정수 값을 제공하는 목적
-	 * 두 객체가 동일한 객체인지 확인하기위한 정수값을 제공하는 목적
-	 * 
-	 * Object 클래스에서는 기본적으로는 객체의 주소값에 해당하는 해시값을 리턴
+
+	/**
+	 * 객체의 필드 값을 기반으로 고유한 정수 값을 생성함
+	 * 두 객체의 논리적 동등성을 비교할 때 equals와 함께 사용됨
 	 */
 	@Override
 	public int hashCode() {
-//		return name.hashCode() + age;
-		return Objects.hash(name,age);
+		// Objects.hash()를 사용하면 여러 필드를 조합한 해시값을 쉽게 생성 가능
+		return Objects.hash(name, age);
 	}
 
-	/*
-	 * 객체 내부가 동일한 값인지 비교하기 위한 메서드
-	 * 비교할려는 객체를 Object 타입으로 받음
+	/**
+	 * 객체 내부의 값이 동일한지 비교함
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		//1. obj가 null인지 체크
+		// 1. 비교 대상이 null인지 확인
 		if(obj == null) return false;
-		//2. 메모리 주소 해시값이 같은지 비교
+		
+		// 2. 메모리 주소(참조)가 같은지 확인 (동일 객체 여부)
 		if(obj == this) return true;
-		//3. 객체 해시값이 다른지 확인
+		
+		// 3. 해시값이 다르면 내용이 반드시 다르므로 false 반환 (성능 향상)
 		if(hashCode() != obj.hashCode()) return false;
-		//4. obj가 현재 클래스와 동일한(비교할 수 있는) 클래스인지
-		//obj가 Person 클래스 타입으로 형변환이 되니?
+		
+		// 4. 타입 비교 및 형변환 후 필드 값 비교
 		if(obj instanceof Person) {
 			Person temp = (Person)obj;
-			//가지고 있는 필드값이랑 비교한 결과값 리턴
+			// 이름과 나이가 모두 일치해야 동일한 데이터로 간주
 			return name.equals(temp.name) && age == temp.age;
 		}
 		return false;
