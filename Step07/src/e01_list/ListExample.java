@@ -14,12 +14,32 @@ public class ListExample {
 	 * 
 	 */
 	public static void main(String[] args) {
+		//문자열만 저장하는 리스트를 생성
 		ArrayList<String> list = new ArrayList<String>();
-		
+		//데이터 추가
+		list.add("HTML/CSS");
+		list.add("javascript");
+		list.add("React");
+		list.add("MySQL");
+		list.add("jsp/Servlet");
+		list.add("Spring");
+		list.add("MySQL");
+		list.add("RTOS");
+
+		System.out.println(list);
+		//데이터 삭제
+		list.remove(1);
+		System.out.println(list);
+		list.remove("MySQL");
+		System.out.println(list);
 		
 	}
 
 }
+
+
+
+
 
 
 
