@@ -34,8 +34,33 @@ public class Person {
 //		return name.hashCode() + age;
 		return Objects.hash(name,age);
 	}
+
+	/*
+	 * 객체 내부가 동일한 값인지 비교하기 위한 메서드
+	 * 비교할려는 객체를 Object 타입으로 받음
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		//1. obj가 null인지 체크
+		if(obj == null) return false;
+		//2. 메모리 주소 해시값이 같은지 비교
+		if(obj == this) return true;
+		//3. 객체 해시값이 다른지 확인
+		if(hashCode() != obj.hashCode()) return false;
+		//4. obj가 현재 클래스와 동일한(비교할 수 있는) 클래스인지
+		//obj가 Person 클래스 타입으로 형변환이 되니?
+		if(obj instanceof Person) {
+			Person temp = (Person)obj;
+			//가지고 있는 필드값이랑 비교한 결과값 리턴
+			return name.equals(temp.name) && age == temp.age;
+		}
+		return false;
+	}
 	
 }
+
+
+
 
 
 
