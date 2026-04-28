@@ -46,7 +46,7 @@ public class StudentService {
 	}
 
 	/**
-	 * 학번으로 학생 존재 여부를 확인하는 인덱스 검색 메서드
+	 * 학번으로 학생 존재 여부를 확인하여 인덱스를 반환함
 	 * 
 	 * @param no 검색할 학번
 	 * @return 찾으면 배열 인덱스, 못 찾으면 -1
@@ -59,6 +59,12 @@ public class StudentService {
 		return -1;
 	}
 	
+	/**
+	 * 학번으로 학생 객체 자체를 검색하여 반환함
+	 * 
+	 * @param no 검색할 학번
+	 * @return 찾으면 StudentVO 객체, 못 찾으면 null
+	 */
 	public StudentVO searchStudentVO2(String no) {
 		for (int i = 0; i < idx; i++) {
 			if (arr[i].getNo().equals(no))
@@ -69,6 +75,8 @@ public class StudentService {
 
 	/**
 	 * 새로운 학생 정보(객체)를 배열의 빈 공간에 추가함
+	 * @param vo 추가할 학생 정보 객체
+	 * @return 성공 시 true, 공간 부족 시 false
 	 */
 	public boolean appendStudentVO(StudentVO vo) {
 		if (idx == arr.length) {
@@ -81,7 +89,10 @@ public class StudentService {
 
 
 	/**
-	 * 학생 정보를 배열에서 삭제하는 메서드 (기능 이전 전까지 서비스에서 유지)
+	 * 학번을 입력받아 해당 학생 정보를 배열에서 삭제함
+	 * 한 칸씩 당겨서 배열의 연속성을 유지함
+	 * @param no 삭제할 학번
+	 * @return 성공 시 true, 실패 시 false
 	 */
 	public boolean deleteStudentVO(String no) {
 
@@ -103,7 +114,10 @@ public class StudentService {
 	}
 
 	/**
-	 * 학생 이름을 키워드로 검색하여 해당 객체 리턴하는 메서드
+	 * 학생 이름을 키워드로 검색하여 일치하는 첫 번째 객체를 반환함
+	 * (부분 일치 검색 지원)
+	 * @param name 검색할 이름 (또는 키워드)
+	 * @return 찾으면 StudentVO 객체, 못 찾으면 null
 	 */
 	public StudentVO searchStudentVOForName(String name) {
 		for (int i = 0; i < idx; i++) {
