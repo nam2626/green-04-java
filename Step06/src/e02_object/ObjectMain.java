@@ -1,0 +1,13 @@
+package e02_object;
+
+public class ObjectMain {
+
+	public static void main(String[] args) {
+		Person p1 = new Person("홍길동", 20);
+		Person p2 = new Person("홍길동", 20);
+		
+		System.out.println(p1.hashCode());
+		System.out.println(p2.hashCode());
+	}
+
+}
