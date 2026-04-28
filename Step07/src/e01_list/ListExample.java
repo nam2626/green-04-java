@@ -1,6 +1,7 @@
 package e01_list;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ListExample {
 	/*
@@ -41,6 +42,35 @@ public class ListExample {
 		list.set(2, "Android");
 		System.out.println(list);
 		
+		//리스트에 있는 모든 데이터를 삭제
+//		list.clear();
+//		System.out.println(list);
+		
+		//해당 데이터가 리스트에 있냐?
+		System.out.println(list.contains("MySQL"));
+		//해당 데이터가 몇번째 인덱스에 있냐?(처음 검색된 값)
+		System.out.println(list.indexOf("MySQL"));
+		//리스트가 비었냐? (비었으면 true, 안비었으면 false)
+//		list.clear();
+		System.out.println(list.isEmpty());
+		System.out.println("--------");
+		//---------------------------------------------
+		//데이터 꺼내는 방법 - 1
+		//	인덱스 번호를 이용해서 꺼내는 방법
+		for(int i=0;i<list.size();i++) {
+			System.out.println(list.get(i));
+		}
+		System.out.println("--------");
+		//데이터 꺼내는 방법 - 2
+		for(String str : list) {
+			System.out.println(str);
+		}
+		System.out.println("--------");
+		//데이터 꺼내는 방법 - 3
+		Iterator<String> it = list.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
 	}
 
 }
