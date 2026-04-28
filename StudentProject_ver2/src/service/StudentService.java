@@ -103,23 +103,20 @@ public class StudentService {
 	}
 
 	/**
-	 * 학생 이름을 키워드로 검색하여 정보를 출력하는 메서드 (기능 이전 전까지 서비스에서 유지)
+	 * 학생 이름을 키워드로 검색하여 해당 객체 리턴하는 메서드
 	 */
-	public void searchStudentVO(Scanner sc) {
-		System.out.println("학생정보 조회 작업을 시작합니다......");
-
-		System.out.print("조회할 학생 이름을 입력하세요 : ");
-		String name = sc.nextLine();
-
-		int count = 0;
-
+	public StudentVO searchStudentVOForName(String name) {
 		for (int i = 0; i < idx; i++) {
 			if (arr[i].getName().indexOf(name) != -1) {
-				arr[i].printInfo();
-				count++;
+				return arr[i];
 			}
 		}
-
-		System.out.println("총 " + count + "건 조회되었습니다.");
+		return null;
 	}
 }
+
+
+
+
+
+

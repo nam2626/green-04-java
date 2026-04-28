@@ -34,6 +34,9 @@ public class HandlerMapping {
 		case 3:
 			controller = new StudentUpdateController();
 			break;
+		case 4:
+			controller = new StudentSearchForNameController();
+			break;
 		case 5:
 			// 전체 학생 정보 출력을 담당하는 컨트롤러 생성
 			controller = new StudentAllPrintController();
