@@ -1,6 +1,9 @@
 package e04_interface;
 
-public class Person implements Eat{
+/**
+ * Eat 인터페이스를 구현한 Person 클래스
+ */
+public class Person implements Eat {
 
 	@Override
 	public void eat() {

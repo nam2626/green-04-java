@@ -1,29 +1,28 @@
 package e06_diamond;
 
-public class Example implements A,B,C,D{
+/**
+ * 모든 추상 메서드를 최종적으로 구현하는 클래스
+ */
+public class Example implements A, B, C, D {
 
 	@Override
 	public void methodD() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("methodD 구현");
 	}
 
 	@Override
 	public void methodC() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("methodC 구현");
 	}
 
 	@Override
 	public void methodB() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("methodB 구현");
 	}
 
 	@Override
 	public void methodA() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("methodA 구현");
 	}
 
 }
