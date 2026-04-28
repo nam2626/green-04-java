@@ -82,3 +82,30 @@
 4.  **Controller (요리사)**: `execute()` 명령을 받아 일을 시작합니다. 이때 `StudentService` 창고지기에게 가서 "학생 목록 좀 다 꺼내주세요"라고 요청합니다.
 5.  **StudentService (창고지기)**: 창고(배열)에서 학생 데이터를 꺼내 요리사에게 전달합니다.
 6.  **결과**: 요리사가 화면에 학생 정보를 예쁘게 출력합니다.
+
+---
+
+## 🛠 상세 실행 과정 (코드 흐름 따라가기)
+
+초보자분들은 아래 순서대로 코드가 어떻게 움직이는지 살펴보세요!
+
+### **1단계: 메뉴 입력 (Waiting for Order)**
+*   `StudentMain` 클래스의 `while(true)` 루프가 돌아가며 사용자에게 메뉴 번호를 입력받습니다.
+*   예: 사용자가 `1`을 입력하면 `no` 변수에 `1`이 저장됩니다.
+
+### **2단계: 전문가 찾기 (Mapping Phase)**
+*   `StudentMain`은 직접 "1번이 뭐였지?"라고 고민하지 않습니다. 
+*   대신 `HandlerMapping.getInstance().createController(no)`를 호출하여 **"1번 담당자(Controller)를 데려와줘"**라고 요청합니다.
+*   `HandlerMapping`은 `switch-case` 문을 통해 `1`번에 해당하는 `StudentInsertController` 객체를 생성해서 돌려줍니다.
+
+### **3단계: 임무 수행 (Execution Phase)**
+*   데려온 담당자(`controller`)가 `null`이 아니라면, `controller.execute(sc)` 명령을 내립니다.
+*   이때 **다형성(Polymorphism)**의 마법이 일어납니다! 부모인 `Controller` 타입으로 받았지만, 실제로는 `StudentInsertController`의 `execute`가 실행됩니다.
+
+### **4단계: 데이터 보관 및 조회 (Service Interaction)**
+*   각 `Controller`는 작업을 위해 학생 데이터가 필요하면 `StudentService.getInstance()`를 호출합니다.
+*   **싱글톤(Singleton)** 덕분에 프로그램 어디서든 항상 **똑같은 데이터 창고**에 접근하게 됩니다. 
+*   요리사(Controller)가 재료(데이터)를 냉장고(Service)에 넣거나 빼는 과정입니다.
+
+### **5단계: 결과 보고 (Response)**
+*   모든 작업이 끝나면 화면에 "등록이 완료되었습니다" 같은 메시지를 띄우고, 다시 지배인(`StudentMain`)의 메뉴 화면으로 돌아가 다음 주문을 기다립니다.
