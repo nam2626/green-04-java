@@ -30,7 +30,15 @@ public class ListExample {
 		//데이터 삭제
 		list.remove(1);
 		System.out.println(list);
-		list.remove("MySQL");
+		list.remove("MySQL");//최초 검색된 데이터만 삭제
+		System.out.println(list);
+		//리스트가 저장하고 있는 데이터 개수
+		System.out.println(list.size());
+		//리스트의 특정 인덱스에다가 데이터를 삽입
+		list.add(2, "Kotlin");
+		System.out.println(list);
+		//리스트의 특정 인덱스에다가 데이터를 교체
+		list.set(2, "Android");
 		System.out.println(list);
 		
 	}
