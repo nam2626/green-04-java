@@ -56,6 +56,10 @@ public class StudentService {
 	public StudentVO[] getArr() {
 		return arr;
 	}
+	
+	public ArrayList<StudentVO> getList() {
+		return list;
+	}
 
 	public int searchStudentVO(String no) {
 		for (int i = 0; i < list.size(); i++) {
