@@ -2,7 +2,7 @@ package e02_set;
 
 import java.util.Objects;
 
-public class Person {
+public class Person implements Comparable<Person> {
 	private String name;
 	private int age;
 
@@ -34,7 +34,22 @@ public class Person {
 		Person other = (Person) obj;
 		return age == other.age && Objects.equals(name, other.name);
 	}
+
+	@Override
+	public int compareTo(Person o) {
+		System.out.println("compareTo");
+		if(!this.equals(o)) {
+			return hashCode()-o.hashCode();
+		}			
+		return 0;
+	}
 	
 	
 	
 }
+
+
+
+
+
+

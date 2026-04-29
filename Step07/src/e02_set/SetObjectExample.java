@@ -1,15 +1,17 @@
 package e02_set;
 
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 public class SetObjectExample {
 
 	public static void main(String[] args) {
-		HashSet<Person> set = new HashSet<Person>();
+//		HashSet<Person> set = new HashSet<Person>();
+		TreeSet<Person> set = new TreeSet<Person>();
 		
 		set.add(new Person("홍길동",20));
 		set.add(new Person("김철수",30));
+		set.add(new Person("김철수",20));
 		set.add(new Person("홍길동",20));
 		set.add(new Person("박수형",32));
 		

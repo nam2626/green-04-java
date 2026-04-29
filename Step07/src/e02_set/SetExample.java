@@ -34,7 +34,7 @@ public class SetExample {
 		while(it.hasNext()) {
 			System.out.println(it.next());
 		}
-		
+
 		//데이터 전체 조회 - 2
 		for(Integer i : set) {
 			System.out.println(i);
