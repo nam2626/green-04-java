@@ -21,6 +21,8 @@ public class ListObjectExample {
 		
 		Point search = new Point(10,7);
 		System.out.println(list.contains(search));
+		System.out.println(list.indexOf(search));
+		System.out.println(list.remove(search));
 		
 		
 	}

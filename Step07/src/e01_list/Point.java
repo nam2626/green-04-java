@@ -18,11 +18,13 @@ public class Point {
 
 	@Override
 	public int hashCode() {
+		System.out.println("hashCode");
 		return Objects.hash(x, y);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println("equals");
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
