@@ -6,5 +6,6 @@
 - try : 작업 영역(실행할 코드), 이 영역에서는 Exception이 발생할 수 있다.
 - catch : try영역에서 Exception이 발생 했을 때, 해당 Exception 처리하는 영역
 - finally : Exception이 발생 하든 안하든 반드시 실행되는 영역, 작업에서 마지막 처리
-- throw : 
-- throws : 
+- throw : 원하는 부분에서 Exception을 강제로 발생시키는 행위
+- throws : 발생한 Exception을 외부로 던지는 행위
+		   (메서드를 호출한 대상에게 Exception을 전달)

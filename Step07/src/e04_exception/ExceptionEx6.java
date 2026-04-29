@@ -16,7 +16,7 @@ public class ExceptionEx6 {
 				throw new UserException("0으로 나눌수 없습니다.");//원하는 시점에서 Exception을 강제로 발생 
 			
 			System.out.println(n1 / n2);
-		}catch (UserException e) {
+		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
