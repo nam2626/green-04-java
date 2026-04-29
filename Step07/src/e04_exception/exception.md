@@ -3,8 +3,8 @@
 프로그램을 강제로 종료되는 것을 막기 위해서
 예외처리를 활용하면 프로그램 실행 중에 에러가 발생해도,
 해당 에러를 잡아서 처리한 후에 남은 작업을 이어서 하게끔 처리하는 방법
-- try : 
-- catch : 
-- finally : 
+- try : 작업 영역(실행할 코드), 이 영역에서는 Exception이 발생할 수 있다.
+- catch : try영역에서 Exception이 발생 했을 때, 해당 Exception 처리하는 영역
+- finally : Exception이 발생 하든 안하든 반드시 실행되는 영역, 작업에서 마지막 처리
 - throw : 
 - throws : 
