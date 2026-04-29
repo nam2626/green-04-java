@@ -87,13 +87,6 @@ public class StudentService {
 		return list.add(vo);
 	}
 
-
-	/**
-	 * 학번을 입력받아 해당 학생 정보를 배열에서 삭제함
-	 * 한 칸씩 당겨서 배열의 연속성을 유지함
-	 * @param no 삭제할 학번
-	 * @return 성공 시 true, 실패 시 false
-	 */
 	public boolean deleteStudentVO(String no) {
 
 		// 삭제할 학생 정보가 있는지? 확인
@@ -101,16 +94,8 @@ public class StudentService {
 
 		if (i == -1) 
 			return false;
-
-		// 한 칸씩 당겨서 빈 공간 메우기
-		for (int j = i; j < idx - 1; j++) {
-			arr[j] = arr[j + 1];
-		}
-
-		arr[idx - 1] = null;
-		idx--;
 		
-		return true;
+		return list.remove(i) != null;
 	}
 
 	/**
