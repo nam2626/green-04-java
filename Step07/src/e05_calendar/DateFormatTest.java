@@ -35,6 +35,50 @@ public class DateFormatTest {
 		// 일 2자리
 		sdf.applyPattern("dd");
 		System.out.println(sdf.format(today.getTime()));
+		// 요일 - 로컬 형식
+		sdf.applyPattern("E");
+		System.out.println(sdf.format(today.getTime()));
+		// 요일 - 로컬 형식 
+		sdf.applyPattern("EEE");
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("EEEE");
+		System.out.println(sdf.format(today.getTime()));
+		//AM PM
+		sdf.applyPattern("a");
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("h"); //12시간 기준
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("hh");
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("H"); //24시간 기준
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("HH");
+		System.out.println(sdf.format(today.getTime()));
+		//분
+		sdf.applyPattern("m");
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("mm");
+		System.out.println(sdf.format(today.getTime()));
+		//초
+		sdf.applyPattern("s");
+		System.out.println(sdf.format(today.getTime()));
+		sdf.applyPattern("ss");
+		System.out.println(sdf.format(today.getTime()));
+		//2026_04_29_17_22_44
+		sdf.applyPattern("yyyy_MM_dd_HH_mm_ss");
+		System.out.println(sdf.format(today.getTime()));
+		
+		sdf.applyPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		System.out.println(sdf.format(today.getTime()));
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
