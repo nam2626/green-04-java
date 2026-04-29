@@ -2,6 +2,7 @@ package e05_calendar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DateFormatTest {
 
@@ -71,13 +72,9 @@ public class DateFormatTest {
 		sdf.applyPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
 		System.out.println(sdf.format(today.getTime()));
 		
-		
-		
-		
-		
-		
-		
-		
+		//날짜 로컬 형식 변경
+		sdf = new SimpleDateFormat("MMM MMMM E EEE EEEE a",Locale.ENGLISH);
+		System.out.println(sdf.format(today.getTime()));
 		
 
 	}
