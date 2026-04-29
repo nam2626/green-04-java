@@ -32,6 +32,7 @@ public class StudentService {
 		arr[idx++] = new StudentVO("20230004", "박영수", "생활체육학과", 4.0);
 		arr[idx++] = new StudentVO("20230005", "최민수", "전자공학과", 3.5);
 		
+		list = new ArrayList<StudentVO>();
 		//리스트에 샘플 데이터 초기화
 		list.add(new StudentVO("20230001", "홍길동", "컴퓨터공학과", 4.5));
 		list.add( new StudentVO("20230002", "김철수", "경영학과", 3.8));
@@ -56,12 +57,6 @@ public class StudentService {
 		return arr;
 	}
 
-	/**
-	 * 학번으로 학생 존재 여부를 확인하여 인덱스를 반환함
-	 * 
-	 * @param no 검색할 학번
-	 * @return 찾으면 배열 인덱스, 못 찾으면 -1
-	 */
 	public int searchStudentVO(String no) {
 		for (int i = 0; i < idx; i++) {
 			if (arr[i].getNo().equals(no))
@@ -84,18 +79,8 @@ public class StudentService {
 		return null;
 	}
 
-	/**
-	 * 새로운 학생 정보(객체)를 배열의 빈 공간에 추가함
-	 * @param vo 추가할 학생 정보 객체
-	 * @return 성공 시 true, 공간 부족 시 false
-	 */
 	public boolean appendStudentVO(StudentVO vo) {
-		if (idx == arr.length) {
-			System.out.println("더 이상 저장할 공간이 없습니다.");
-			return false;
-		}
-		arr[idx++] = vo;
-		return true;
+		return list.add(vo);
 	}
 
 
