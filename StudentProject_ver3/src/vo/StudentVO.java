@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.Objects;
+
 /**
  * 학생 정보를 저장하는 Value Object 클래스
  */
@@ -89,6 +91,31 @@ public class StudentVO {
 	public void setScore(double score) {
 		this.score = score;
 	}
+
+	/**
+	 * 학번(no)을 기준으로 해시코드를 생성함
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(no);
+	}
+
+	/**
+	 * 학번(no)을 기준으로 객체의 동일성을 비교함
+	 * list.indexOf() 등에서 활용됨
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof StudentVO))
+			return false;
+		StudentVO temp = (StudentVO) obj;
+		return no.equals(temp.no);
+	}
+
 	
 }
 

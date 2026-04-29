@@ -11,10 +11,6 @@ import vo.StudentVO;
 public class StudentService {
 	// 자기 자신의 인스턴스를 하나만 생성하여 유지함 (싱글톤)
 	private static StudentService instance = new StudentService();
-
-	// 데이터 저장용 배열과 현재 개수 관리 변수
-	private StudentVO[] arr;
-	private int idx;
 	
 	// 데이터 저장용 리스트 생성
 	private ArrayList<StudentVO> list;
@@ -23,15 +19,6 @@ public class StudentService {
 	 * 외부에서 직접 객체 생성을 못하도록 생성자를 private으로 설정
 	 */
 	private StudentService() {
-		arr = new StudentVO[20]; // 최대 20명 저장 가능
-
-		// 테스트용 샘플 데이터 초기화
-		arr[idx++] = new StudentVO("20230001", "홍길동", "컴퓨터공학과", 4.5);
-		arr[idx++] = new StudentVO("20230002", "김철수", "경영학과", 3.8);
-		arr[idx++] = new StudentVO("20230003", "이영희", "심리학과", 3.2);
-		arr[idx++] = new StudentVO("20230004", "박영수", "생활체육학과", 4.0);
-		arr[idx++] = new StudentVO("20230005", "최민수", "전자공학과", 3.5);
-		
 		list = new ArrayList<StudentVO>();
 		//리스트에 샘플 데이터 초기화
 		list.add(new StudentVO("20230001", "홍길동", "컴퓨터공학과", 4.5));
@@ -49,18 +36,20 @@ public class StudentService {
 			instance = new StudentService();
 		return instance;
 	}
-
-	/**
-	 * 컨트롤러에서 데이터를 읽어갈 수 있도록 배열 참조를 반환함
-	 */
-	public StudentVO[] getArr() {
-		return arr;
-	}
 	
+	/**
+	 * 전체 학생 리스트를 반환하는 메서드
+	 * @return 학생 리스트
+	 */
 	public ArrayList<StudentVO> getList() {
 		return list;
 	}
 
+	/**
+	 * 학번을 기준으로 학생의 인덱스를 찾는 메서드
+	 * @param no 검색할 학번
+	 * @return 찾으면 해당 인덱스, 못 찾으면 -1
+	 */
 	public int searchStudentVO(String no) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getNo().equals(no))
@@ -69,28 +58,39 @@ public class StudentService {
 		return -1;
 	}
 
+	/**
+	 * 학번 중복 여부를 체크하는 메서드 (Stream API 활용)
+	 * @param no 체크할 학번
+	 * @return 중복이면 true, 아니면 false
+	 */
 	public boolean checkDuplicateStudent(String no) {
 		return list.stream().filter(t -> t.getNo().equals(no)).count() != 0;
 	}
 	
 	/**
-	 * 학번으로 학생 객체 자체를 검색하여 반환함
-	 * 
+	 * 학번을 기준으로 학생 객체를 직접 찾는 메서드 (equals 활용)
 	 * @param no 검색할 학번
-	 * @return 찾으면 StudentVO 객체, 못 찾으면 null
+	 * @return 학생 객체
 	 */
 	public StudentVO searchStudentVO2(String no) {
-		for (int i = 0; i < idx; i++) {
-			if (arr[i].getNo().equals(no))
-				return arr[i];
-		}
-		return null;
+		int i = list.indexOf(new StudentVO(no, null, null, 0));
+		return list.get(i);
 	}
 
+	/**
+	 * 새로운 학생 정보를 리스트에 추가하는 메서드
+	 * @param vo 추가할 학생 VO 객체
+	 * @return 추가 성공 여부
+	 */
 	public boolean appendStudentVO(StudentVO vo) {
 		return list.add(vo);
 	}
 
+	/**
+	 * 학번을 기준으로 학생 정보를 삭제하는 메서드
+	 * @param no 삭제할 학번
+	 * @return 삭제 성공 여부
+	 */
 	public boolean deleteStudentVO(String no) {
 
 		// 삭제할 학생 정보가 있는지? 확인
@@ -109,9 +109,9 @@ public class StudentService {
 	 * @return 찾으면 StudentVO 객체, 못 찾으면 null
 	 */
 	public StudentVO searchStudentVOForName(String name) {
-		for (int i = 0; i < idx; i++) {
-			if (arr[i].getName().indexOf(name) != -1) {
-				return arr[i];
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().indexOf(name) != -1) {
+				return list.get(i);
 			}
 		}
 		return null;
