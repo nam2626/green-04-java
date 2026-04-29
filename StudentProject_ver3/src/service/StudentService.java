@@ -58,11 +58,15 @@ public class StudentService {
 	}
 
 	public int searchStudentVO(String no) {
-		for (int i = 0; i < idx; i++) {
-			if (arr[i].getNo().equals(no))
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNo().equals(no))
 				return i;
 		}
 		return -1;
+	}
+
+	public boolean checkDuplicateStudent(String no) {
+		return list.stream().filter(t -> t.getNo().equals(no)).count() != 0;
 	}
 	
 	/**

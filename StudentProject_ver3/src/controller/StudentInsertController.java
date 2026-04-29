@@ -17,6 +17,7 @@ public class StudentInsertController implements Controller {
 		System.out.print("등록할 학생의 학번 : ");
 		String no = sc.nextLine();
 		while (true) {
+			System.out.println(StudentService.getInstance().searchStudentVO3(no));
 			if (StudentService.getInstance().searchStudentVO(no) == -1)
 				break; // 중복이 없으면 루프 탈출
 			System.out.println("학번이 중복되었습니다.");
