@@ -1,5 +1,7 @@
 package e03_event;
 
+import e03_event.View.OnClikeListener;
+
 public class EventMain {
 
 	public static void main(String[] args) {
@@ -19,6 +21,13 @@ public class EventMain {
 			}
 		});
 		btnLogin.onClick();
+		// 람다 적용시
+		Button btnCancel = new Button("취소");
+		btnCancel.setClickListener(view -> {
+			System.out.println(view.getName()+ "버튼 클릭");
+			System.out.println("취소 처리 합니다.");
+		});
+		
 	}
 
 }
