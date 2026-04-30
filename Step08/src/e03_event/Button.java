@@ -1,6 +1,9 @@
 package e03_event;
 
-public class Button extends View{
+/**
+ * View 클래스를 상속받은 Button 클래스
+ */
+public class Button extends View {
 
 	public Button(String name) {
 		super(name);
