@@ -22,7 +22,7 @@ public class ServerWorker extends Thread {
 				// 1-1. 사용자가 보낸 데이터를 받음
 				String msg = br.readLine();
 				if(msg == null || msg.equals("exit")) {
-					System.out.println("서버가 종료됩니다.");
+					System.out.println("클라이언트가 접속 종료했습니다.");
 					break;
 				}
 				// 1-2. 서버가 사용자에게 데이터를 보냄
