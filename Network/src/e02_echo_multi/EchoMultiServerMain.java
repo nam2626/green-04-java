@@ -1,13 +1,18 @@
 package e02_echo_multi;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 public class EchoMultiServerMain {
+	private static Vector<ServerWorker> list = new Vector<ServerWorker>();
+	
+	public static void removeWorker(ServerWorker worker) {
+		list.remove(worker);//객체 비교 후 해당 스레드 제거
+		System.out.println(list.size() + "명 접속 중입니다.");
+	}
+	
 
 	public static void main(String[] args) {
 		System.out.println("서버프로그램을 실행합니다............");
@@ -22,6 +27,9 @@ public class EchoMultiServerMain {
 				// 3. 서버 스레드 생성
 				ServerWorker worker = new ServerWorker(client);
 				worker.start();
+				list.add(worker);//리스트 추가
+				System.out.println(list.size() + "명 접속 중입니다.");
+				
 			}
 		} catch (IOException e) {
 //			e.printStackTrace();

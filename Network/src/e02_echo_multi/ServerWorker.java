@@ -33,6 +33,9 @@ public class ServerWorker extends Thread {
 			e.printStackTrace();
 		}finally {
 			try {
+				System.out.println(client.getInetAddress() + " 접속 종료");
+				EchoMultiServerMain.removeWorker(this);
+				
 				if(client != null) client.close();
 			} catch (IOException e) {
 				e.printStackTrace();
