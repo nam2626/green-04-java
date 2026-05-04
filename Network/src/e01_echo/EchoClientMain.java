@@ -1,4 +1,4 @@
-package basic;
+package e01_echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ClientMain {
+public class EchoClientMain {
 
 	public static void main(String[] args) {
 		//1. 서버 접속 - 192.168.40.90
