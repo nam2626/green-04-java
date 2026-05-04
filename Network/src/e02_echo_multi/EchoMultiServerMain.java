@@ -32,8 +32,7 @@ public class EchoMultiServerMain {
 				
 			}
 		} catch (IOException e) {
-//			e.printStackTrace();
-			System.out.println("클라이언트가 강제로 접속 종료가 되었습니다.");
+			e.printStackTrace();
 		}
 	}
 
