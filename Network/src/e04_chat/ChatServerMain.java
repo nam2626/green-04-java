@@ -15,6 +15,11 @@ public class ChatServerMain {
 		list.remove(worker);// 객체 비교 후 해당 스레드 제거
 		System.out.println(list.size() + "명 접속 중입니다.");
 	}
+	
+	//전체 클라이언트에게 메세지를 뿌리는 메서드
+	private static void broadCasting(String msg) {
+		list.forEach(t -> t.sendMessage(msg));
+	}
 
 	public static void main(String[] args) {
 		System.out.println("서버프로그램을 실행합니다............");
@@ -38,7 +43,7 @@ public class ChatServerMain {
 		}
 	}
 
-	public static class ServerWorker extends Thread {
+	private final static class ServerWorker extends Thread {
 		private Socket client;
 		private BufferedReader br;
 		private PrintWriter pw;
@@ -69,6 +74,7 @@ public class ChatServerMain {
 						break;
 					}
 					//클라이언트가 보낸 메세지를 전체 클라이언트에게 전달
+					broadCasting(client.getInetAddress() + "님의 메세지 : " + msg);
 				}
 
 			} catch (IOException e) {
